@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: add-task
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: add-task
+  template:
+    metadata:
+      labels:
+        app: add-task
+    spec:
+      containers:
+      - name: add-task-container
+        image: devopsinsiders/add-task
+        ports:
+        - containerPort: 8000
+        env:
+        - name: "CONNECTION_STRING"
+          valueFrom:
+            configMapKeyRef: 
+              name: addconfig
+              key: key1

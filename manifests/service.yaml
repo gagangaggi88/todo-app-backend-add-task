@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: addtaskservice
+spec:
+  selector:
+    app: add-task
+  ports:
+  - port: 80
+    targetPort: 8000
